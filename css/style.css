@@ -132,7 +132,6 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: repeat-y;
-  background-attachment: fixed;
 }
 
 footer {
@@ -167,6 +166,9 @@ h1 {
   color: #E493B3;
   text-justify: inter-word;
   word-wrap: break-word;
+  animation-name: example;
+  animation-duration: 1s;
+  background-color: white;
 }
 
 
@@ -265,13 +267,17 @@ td {
     transition-duration: 100ms;
   }
 
-  image:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+  @keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
   }
 
   ol {
     display: inline-block;
     text-align: center;
   }
+
+
 }
