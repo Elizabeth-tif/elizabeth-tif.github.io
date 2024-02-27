@@ -105,6 +105,10 @@ nav ul li a:hover {
   margin-right: auto;
 }
 
+.image:hover {
+  transform: rotate(-2deg); 
+}
+
 .container {
   border: 2px solid #b784b7;
   background-color: white;
@@ -166,8 +170,6 @@ h1 {
   color: #E493B3;
   text-justify: inter-word;
   word-wrap: break-word;
-  animation-name: example;
-  animation-duration: 1s;
   background-color: white;
 }
 
@@ -267,12 +269,6 @@ td {
     transition-duration: 100ms;
   }
 
-  @keyframes example {
-    0%   {background-color: red;}
-    25%  {background-color: yellow;}
-    50%  {background-color: blue;}
-    100% {background-color: green;}
-  }
 
   ol {
     display: inline-block;
