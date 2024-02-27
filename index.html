@@ -18,7 +18,7 @@
             </div>
             <ul>
                 <li><a href="#Home">Home</a></li>
-                <li><a href="#Profile">Profile</a></li>
+                <li><a href="#Motto">Motto</a></li>
                 <li><a href="#Skills">Skills</a></li>
                 <li><a href="#Files">Files</a></li>
                 <li><a href="#About">About</a></li>
@@ -33,16 +33,17 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div id="Home" class="container">
         <main>
-            <div id="Home" class="box flextwo">
+            <div id="Profile" class="box flextwo">
                 <article>
                     <b>
-                        <h1>Tentang Saya</h1>
+                        <br><br>
+                        <h1><b>Tentang Saya</b></h1>
                     </b>
                     <figure class="box flexone">
-                        <img src="img/profile.jpeg" class="image" />
-                        <h4>Elizabeth Gita G T</h4>
+                        <img src="img/profile.jpeg" class="image circle" />
+                        <h3><br>Elizabeth Gita G T</h3>
                     </figure>
                     <p>
                         Hello! My name is Elizabeth Gita or you can call me Gita. <br>
@@ -50,49 +51,62 @@
                         I am interested in learning a lot of things and i hope i can learn plenty from the masters.
                     </p>
 
-                    <iframe src="https://youtu.be/iUWb4M5f23w?si=d_gGvUJ5m9DORHBE" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
-                    </iframe>
+                    <div align="center"><iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/iUWb4M5f23w?si=9p50To1L2ut7ywjM"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe></div>
 
-                    <table width="100%">
+                    <table width="100%" class="border">
                         <tr>
-                            <td>Nama</td>
-                            <td>Elizabeth Gita</td>
+                            <td class="border">Nama</td>
+                            <td class="border">Elizabeth Gita</td>
                         </tr>
                         <tr>
-                            <td>NIM</td>
-                            <td>231524040</td>
+                            <td class="border">NIM</td>
+                            <td class="border">231524040</td>
                         </tr>
                         <tr>
-                            <td>Tempat, tanggal lahir</td>
-                            <td>Denpasar, 14 Juli 2005</td>
+                            <td class="border">Tempat, tanggal lahir</td>
+                            <td class="border">Denpasar, 14 Juli 2005</td>
                         </tr>
                         <tr>
-                            <td>Domisili</td>
-                            <td>Bandung Barat</td>
+                            <td class="border">Domisili</td>
+                            <td class="border">Bandung Barat</td>
                         </tr>
                         <tr>
-                            <td>Agama</td>
-                            <td>Katholik</td>
+                            <td class="border">Agama</td>
+                            <td class="border">Katholik</td>
                         </tr>
                     </table>
-
                 </article>
             </div>
 
         </main>
     </div>
-    <div class="container">
-
-
+    <div id="Motto" class="container">
+        <h1><b>Motto Hidup</b></h1><br>
+        <img src="img/motto.jpg" width="500px" class="center circular">
     </div>
+    <div id="Skills" class="container"  style="margin-bottom: 500px;">
+        <h1><b>Technical Skills</b></h1><br>
+        <table width="100%" class="border" style="table-layout: fixed; margin-bottom: 50px;">
+            <tr>
+                <td><img src="img/c.png" width="50px"></td>
+                <td><img src="img/java.png" width="50px"></td>
+                <td><img src="img/985px-Laravel.svg.png" width="50px"></td>
+            </tr>
+            <tr>
+                <td>Intermediate <br>C Programming Language</td>
+                <td>Beginner <br>Java Language</td>
+                <td>Beginner <br>Laravel Framework</td>
+            </tr>
     </div>
-    <footer class="box">
+    <script src="js/main.js"></script>
+    <footer class="box" width="100%">
         © Elizabeth Gita 27 Februari 2024
     </footer>
-    <script src="js/main.js"></script>
+
 </body>
 
 </html>
