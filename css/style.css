@@ -235,8 +235,6 @@ td {
   }
 
   .galeri {
-    width: 100%; 
-    height: auto; 
     object-fit: cover;
     margin: 2.5% 0; 
     box-shadow: 0 0 5px 0.1px;
