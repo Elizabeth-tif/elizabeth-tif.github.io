@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyek1 STr HTML 27 02 2024</title>
+    <title>Extras</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Srisakdi&display=swap" rel="stylesheet">
 
@@ -20,7 +20,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#Motto">Motto</a></li>
                 <li><a href="index.html#Skills">Skills</a></li>
-                <li><a href="index.html#Files">Lampiran</a></li>
+                <li><a href="files.html">Lampiran</a></li>
                 <li><a href="index.html#About">About</a></li>
 
             </ul>
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
             </table>
-            
+
         </div>
         <div id="link" class="box flextwo">
 
@@ -73,90 +73,125 @@
     </div>
     <div class="container">
         <div id="Snake" class="box flextwo">
-            <h1>Snake Game</h1>
-            <canvas id="gameCanvas" width="400" height="400"><script>
-                const canvas = document.getElementById('gameCanvas');
+            <h1>TicTacToe</h1>
+            <canvas id="boardCanvas" width="300%" height="300%"></canvas>
+
+            <script>
+                const canvas = document.getElementById('boardCanvas');
                 const ctx = canvas.getContext('2d');
-            
-                const gridSize = 20;
-                let snake = [{ x: 10, y: 10 }];
-                let food = { x: 15, y: 15 };
-                let dx = 0;
-                let dy = 0;
-                let score = 0;
-            
-                function drawSnake() {
-                    ctx.fillStyle = 'green';
-                    snake.forEach((segment) => {
-                        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
-                    });
-                }
-            
-                function drawFood() {
-                    ctx.fillStyle = 'red';
-                    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
-                }
-            
-                function moveSnake() {
-                    const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-                    snake.unshift(head);
-                    if (head.x === food.x && head.y === food.y) {
-                        score += 10;
-                        document.getElementById('score').innerText = `Score: ${score}`;
-                        generateFood();
-                    } else {
-                        snake.pop();
+
+                const cellSize = 100;
+                const boardSize = 3;
+
+                canvas.addEventListener('click', handleClick);
+
+                let currentPlayer = 'X';
+                let board = [
+                    ['', '', ''],
+                    ['', '', ''],
+                    ['', '', '']
+                ];
+
+                function handleClick(event) {
+                    const rect = canvas.getBoundingClientRect();
+                    const x = Math.floor((event.clientX - rect.left) / cellSize);
+                    const y = Math.floor((event.clientY - rect.top) / cellSize);
+
+                    if (board[y][x] === '') {
+                        board[y][x] = currentPlayer;
+                        renderBoard();
+                        if (checkWinner()) {
+                            alert(currentPlayer + ' wins!');
+                            resetGame();
+                        } else if (checkDraw()) {
+                            alert('It\'s a draw!');
+                            resetGame();
+                        } else {
+                            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                        }
                     }
                 }
-            
-                function generateFood() {
-                    food.x = Math.floor(Math.random() * (canvas.width / gridSize));
-                    food.y = Math.floor(Math.random() * (canvas.height / gridSize));
-                }
-            
-                function checkCollision() {
-                    if (
-                        snake[0].x < 0 || snake[0].x >= canvas.width / gridSize ||
-                        snake[0].y < 0 || snake[0].y >= canvas.height / gridSize ||
-                        snake.slice(1).some((segment) => segment.x === snake[0].x && segment.y === snake[0].y)
-                    ) {
-                        clearInterval(gameInterval);
-                        alert(`Game over! Your score: ${score}`);
-                    }
-                }
-            
-                function update() {
+
+                function renderBoard() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    drawSnake();
-                    drawFood();
-                    moveSnake();
-                    checkCollision();
-                }
-            
-                document.addEventListener('keydown', (event) => {
-                    const keyPressed = event.key;
-                    if (keyPressed === 'ArrowUp' && dy === 0) {
-                        dx = 0;
-                        dy = -1;
-                    } else if (keyPressed === 'ArrowDown' && dy === 0) {
-                        dx = 0;
-                        dy = 1;
-                    } else if (keyPressed === 'ArrowLeft' && dx === 0) {
-                        dx = -1;
-                        dy = 0;
-                    } else if (keyPressed === 'ArrowRight' && dx === 0) {
-                        dx = 1;
-                        dy = 0;
+                    ctx.strokeStyle = '#aaa';
+                    ctx.lineWidth = 2;
+
+                    for (let i = 1; i < boardSize; i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(i * cellSize, 0);
+                        ctx.lineTo(i * cellSize, canvas.height);
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.moveTo(0, i * cellSize);
+                        ctx.lineTo(canvas.width, i * cellSize);
+                        ctx.stroke();
                     }
-                });
-            
-                generateFood();
-                let gameInterval = setInterval(update, 100);
+
+                    ctx.font = '36px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    for (let y = 0; y < boardSize; y++) {
+                        for (let x = 0; x < boardSize; x++) {
+                            const cellValue = board[y][x];
+                            if (cellValue !== '') {
+                                ctx.fillText(cellValue, x * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
+                            }
+                        }
+                    }
+                }
+
+                function checkWinner() {
+                    // Check rows
+                    for (let i = 0; i < boardSize; i++) {
+                        if (board[i][0] !== '' && board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
+                            return true;
+                        }
+                    }
+                    // Check columns
+                    for (let i = 0; i < boardSize; i++) {
+                        if (board[0][i] !== '' && board[0][i] === board[1][i] && board[1][i] === board[2][i]) {
+                            return true;
+                        }
+                    }
+                    // Check diagonals
+                    if (board[0][0] !== '' && board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+                        return true;
+                    }
+                    if (board[0][2] !== '' && board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+                        return true;
+                    }
+                    return false;
+                }
+
+                function checkDraw() {
+                    for (let row = 0; row < boardSize; row++) {
+                        for (let col = 0; col < boardSize; col++) {
+                            if (board[row][col] === '') {
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+
+                function resetGame() {
+                    currentPlayer = 'X';
+                    board = [
+                        ['', '', ''],
+                        ['', '', ''],
+                        ['', '', '']
+                    ];
+                    renderBoard();
+                }
+
+                renderBoard();
             </script>
-            <p id="score">Score: 0</p></canvas>
         </div>
 
-        </div>
+    </div>
     </div>
 
     <script src="js/main.js"></script>
