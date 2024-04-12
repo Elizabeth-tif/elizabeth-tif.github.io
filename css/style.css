@@ -15,6 +15,7 @@ nav {
   right: 0%;
   left: 0%;
   height: 50px;
+  z-index : 100;
 }
 
 nav ul {
@@ -23,11 +24,13 @@ nav ul {
   width: 40%;
   justify-content: space-between;
   transition: all 0.4s;
+  z-index : 100;
 }
 
 nav .logo {
   font-family: "Srisakdi", cursive;
   letter-spacing: 3px;
+  z-index : 100;
 }
 
 nav ul li a {
@@ -35,10 +38,12 @@ nav ul li a {
   color: whitesmoke;
   display: inline;
   margin-right: 20px;
+  z-index : 100;
 }
 
 nav ul li a:hover {
   color: #eea5a6;
+  z-index : 100;
 }
 
 /* Hamburger menu */
@@ -48,6 +53,7 @@ nav ul li a:hover {
   height: 17px;
   justify-content: space-between;
   position: relative;
+  z-index : 100;
 }
 
 .menu-toggle input {
@@ -58,7 +64,7 @@ nav ul li a:hover {
   height: 21px;
   opacity: 0;
   cursor: pointer;
-  z-index: 2;
+  z-index: 100;
 }
 
 .menu-toggle span {
@@ -68,29 +74,35 @@ nav ul li a:hover {
   background-color: whitesmoke;
   border-radius: 3px;
   transition: all 0.7s;
+  z-index : 100;
 }
 
 /* X on hamburger menu */
 .menu-toggle span:nth-child(2) {
   transform-origin: left center;
+  z-index : 101;
 }
 
 .menu-toggle span:nth-child(4) {
   transform-origin: left center;
+  z-index : 100;
 }
 
 .menu-toggle input:checked~span:nth-child(2) {
   transform: rotate(45deg);
+  z-index : 100;
 }
 
 .menu-toggle input:checked~span:nth-child(4) {
   transform: rotate(-45deg);
+  z-index : 100;
 }
 
 .menu-toggle input:checked~span:nth-child(3) {
   width: 0%;
   opacity: 0;
   transition: 0.3s;
+  z-index : 100;
 }
 
 .image {
@@ -223,7 +235,7 @@ td {
     background-color: #e493b3;
     transition: all 0.72s;
     opacity: 0;
-    z-index: 2;
+    z-index: 100;
   }
 
   nav ul.menushow {
