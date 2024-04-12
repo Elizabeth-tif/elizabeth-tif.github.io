@@ -29,5 +29,5 @@ function insertDataScrap() {
 document.addEventListener('DOMContentLoaded', insertDataScrap);
 
 $('#news-table').on('draw.dt', function () {
-    $('#news-table td').css('text-align', 'center');
+    $('#news-table td').css('text-align', 'center', 'border', '1px solid #b784b7');
 });
