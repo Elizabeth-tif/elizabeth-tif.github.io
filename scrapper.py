@@ -37,9 +37,9 @@ for item in data.find_all('li', class_='conten1'):
     published = item.find('div', class_='date').text.strip().split()
     
     if len(published) > 2:
-        berita['waktu_publish'] = ' '.join(published[-4:])
+        berita['publish_time'] = ' '.join(published[-4:])
     elif len(published) == 5:
-        berita['waktu_publish'] = ' '.join(published[-3:])
+        berita['publish_time'] = ' '.join(published[-3:])
 
     berita['storing_time'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
