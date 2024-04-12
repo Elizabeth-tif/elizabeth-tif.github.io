@@ -5,12 +5,29 @@ mntoggle.addEventListener('click', function () {
     nav.classList.toggle('menushow');
 })
 
-document.addEventListener("DOMContentLoaded", function () {
-    var tableRows = document.querySelectorAll("#News table tr:not(:first-child)");
-    tableRows.forEach(function (row) {
-        row.addEventListener("click", function () {
-            var link = row.cells[1].querySelector("a").href;
-            window.open(link, "_blank");
+function insertDataScrap() {
+    fetch('headlines.json')
+        .then(response => response.json())
+        .then(data => {
+            var table = $('#scrapping-table').DataTable();
+            data.forEach((obj, index) => {
+                table.row.add([
+                    index + 1,
+                    obj.headline,
+                    obj.category,
+                    obj.publish_time,
+                    obj.storing_time
+                ]);
+            });
+            table.draw();
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-    });
+}
+
+document.addEventListener('DOMContentLoaded', insertDataScrap);
+
+$('#scrapping-table').on('draw.dt', function () {
+    $('#scrapping-table td').css('text-align', 'center');
 });
