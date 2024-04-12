@@ -6,23 +6,28 @@ menuToggle.addEventListener('click', function () {
     nav.classList.toggle('menushow');
 });
 
-// Fetch and insert data from headlines.json
 function insertDataScrap() {
     fetch('headlines.json')
         .then(response => response.json())
         .then(data => {
-            const table = document.getElementById('scrapping-table');
-
-            data.forEach((obj, index) => {
-                const row = table.insertRow();
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${obj.headline}</td>
-                    <td>${obj.category}</td>
-                    <td>${obj.publish_time}</td>
-                    <td>${obj.storing_time}</td>
-                `;
+            // Initialize DataTable
+            $('#scrapping-table').DataTable({
+                // DataTable options here
             });
+
+            // Insert data into DataTable
+            data.forEach((obj, index) => {
+                $('#scrapping-table').DataTable().row.add([
+                    index + 1,
+                    obj.headline,
+                    obj.category,
+                    obj.publish_time,
+                    obj.storing_time
+                ]);
+            });
+
+            // Redraw DataTable
+            $('#scrapping-table').DataTable().draw();
         })
         .catch(error => {
             console.error('Error:', error);
