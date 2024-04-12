@@ -1,60 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Me</title>
-    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Srisakdi&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css"/>
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Srisakdi&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">
-                <h6><img src="img/logo.png" width="25%" height="100%" alt="Logo"></h6>
-            </div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#Motto">Motto</a></li>
-                <li><a href="index.html#Skills">Skills</a></li>
-                <li><a href="files.html">Lampiran</a></li>
-                <li><a href="scrapping.html">News</a></li>
-
-            </ul>
-            <div class="menu-toggle">
-                <input type="checkbox">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+      <nav>
+        <div class="logo">
+          <h6>
+            <img src="img/logo.png" width="25%" height="100%" alt="Logo" />
+          </h6>
+        </div>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#Motto">Motto</a></li>
+          <li><a href="index.html#Skills">Skills</a></li>
+          <li><a href="files.html">Lampiran</a></li>
+          <li><a href="scrapping.html">News</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
     </header>
 
-    <div id= "scrapping-table" class="container">
-        <div id="News" class="box flextwo">
-            <br><br><br>
-            <h1>News Headline from Republika</h1>
-            <br>
-            <table id="scrapping-table" width="100%" class="border">
-                <thead>
-                    <tr>
-                        <th class="border">No.</th>
-                        <th class="border">Headline</th>
-                        <th class="border">Category</th>
-                        <th class="border">Publish Time</th>
-                        <th class="border">Track Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-        </div>
+    <div class="container">
+      <div id="News" class="box flextwo">
+        <br /><br /><br />
+        <h1>News Headline from Republika</h1>
+        <br />
+        <table id="news-table" width="100%" class="border">
+          <thead>
+            <tr>
+              <th class="border">No.</th>
+              <th class="border">Headline</th>
+              <th class="border">Category</th>
+              <th class="border">Publish Time</th>
+              <th class="border">Track Time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>

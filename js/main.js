@@ -9,7 +9,7 @@ function insertDataScrap() {
     fetch('headlines.json')
         .then(response => response.json())
         .then(data => {
-            var table = $('#scrapping-table').DataTable();
+            var table = $('#news-table').DataTable();
             data.forEach((obj, index) => {
                 table.row.add([
                     index + 1,
@@ -28,6 +28,6 @@ function insertDataScrap() {
 
 document.addEventListener('DOMContentLoaded', insertDataScrap);
 
-$('#scrapping-table').on('draw.dt', function () {
-    $('#scrapping-table td').css('text-align', 'center');
+$('#news-table').on('draw.dt', function () {
+    $('#news-table td').css('text-align', 'center');
 });
