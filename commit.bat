@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-cd "C://Users//Asus//OneDrive/" "-/" "Politeknik/" "Negeri/" "Bandung//Materi/" "Kuliah//Semester/" "2//MK/" "Proyek/\Elizabeth-tif.github.io"
+cd "C:\Users\Asus\OneDrive - Politeknik Negeri Bandung\Materi Kuliah\Semester 2\MK Proyek\Elizabeth-tif.github.io"
 git "add" "--all"
 SET _INTERPOLATION_0=
 FOR /f "delims=" %%a in ('timestamp') DO (SET "_INTERPOLATION_0=!_INTERPOLATION_0! %%a")
